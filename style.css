@@ -1,0 +1,52 @@
+/* กำหนดฟอนต์ให้ทั้งหน้าเว็บใช้ Arial */
+body {
+    font-family: Arial, sans-serif;
+}
+/* สไตล์สำหรับฟอร์ม */
+.form-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* สไตล์สำหรับปุ่ม */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+/* ปุ่ม Clear สีส้ม */
+#clearBtn {
+    background-color: #ec591b; /* สีส้ม */
+    color: white;
+}
+
+/* ปุ่ม Submit สีเขียว */
+button[type="submit"] {
+    background-color: rgb(11, 152, 11); /* สีเขียว */
+    color: white;
+}
+
+/* จัดตำแหน่งปุ่มให้แยกกันทางซ้ายและขวา */
+#reportForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* เพิ่ม Flexbox สำหรับการจัดตำแหน่งปุ่ม */
+button[type="submit"], #clearBtn {
+    margin-top: 10px;
+}
+
+button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

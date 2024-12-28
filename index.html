@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Issue Report</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>IT Issue Report</h2>
+        <form id="reportForm">
+            <label for="roomNumber">Room Number:</label>
+            <input type="text" id="roomNumber" name="roomNumber" required>
+
+            <!-- เปลี่ยนจาก Issue เป็น Topic -->
+            <label for="topic">Issue Topic:</label>
+            <input type="text" id="topic" name="issue" required>
+
+            <label for="details">Issue Details:</label>
+            <textarea id="details" name="details" required></textarea>
+
+            <!-- เพิ่ม container สำหรับปุ่ม -->
+            <div class="button-container">
+                <button type="reset" id="clearBtn">Clear</button>
+                <button type="submit">Submit Report</button>
+            </div>
+        </form>
+
+        <!-- แสดงวันที่และเวลาที่บันทึก -->
+        <p id="displayDateTime"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
