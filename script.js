@@ -17,16 +17,21 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
         details: details
     };
 
-    // ส่งข้อมูลไปยัง Google Apps Script
-    fetch('https://script.google.com/a/macros/homa.co/s/AKfycbyGkCDCRiXRrVAJ4B38e9-wuX2Vc6MEmRt3EqRc0QJFx1gggOZgqueYD7fOTeKwZaID/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwGkCDCRiXRrVAJ4B38e9-wuX2Vc6MEmRt3EqRc0QJFx1gggOZgqueYD7fOTeKwZaID/exec', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    mode: 'no-cors',  // << ใช้ no-cors เพื่อ bypass CORS
+    body: JSON.stringify(data)
+})
+.then(response => {
+    alert('Report submitted successfully!');
+})
+.catch(error => {
+    console.error('Error:', error);
+});
 
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-        mode:'cors'
-    })
     .then(response => response.json())
     .then(result => {
         if (result.status === "success") {
