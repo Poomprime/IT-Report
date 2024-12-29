@@ -15,7 +15,7 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
         details: details
     };
 
-    fetch('YOUR_WEB_APP_URL', { // แทนที่ด้วย Web App URL ของคุณ
+    fetch('https://script.google.com/macros/s/AKfycbzRzZ0mIqlzaPxtMWUQ3TRaDZeAaytyC9ALKZjLabCme_25aKtBDGONiIOVTF-wCENj/exec', { // แทนที่ด้วย Web App URL ของคุณ
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
