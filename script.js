@@ -1,8 +1,12 @@
 document.getElementById("reportForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
+    // ดึงวันที่และเวลาในรูปแบบ ISO string
     var now = new Date();
-    var dateTime = now.toISOString().slice(0, 16);
+    var dateTime = now.toISOString().slice(0, 16); // YYYY-MM-DDTHH:MM
+
+    // แสดงวันที่และเวลาในหน้า HTML
+    document.getElementById("displayDateTime").textContent = "Reported on: " + now.toLocaleString();
 
     var roomNumber = document.getElementById("roomNumber").value;
     var issue = document.getElementById("topic").value;
@@ -15,7 +19,8 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
         details: details
     };
 
-    fetch('https://script.google.com/a/macros/homa.co/s/AKfycbwGnf9iRug4RAu36MLoGEI-J-kaCVOo6i9IRtpz8Fw/dev', { // แทนที่ด้วย Web App URL ของคุณ
+    // ส่งข้อมูลไปยัง Google Apps Script (ใช้ URL ของคุณ)
+    fetch('https://script.google.com/a/macros/homa.co/s/AKfycbwGnf9iRug4RAu36MLoGEI-J-kaCVOo6i9IRtpz8Fw/dev', {  // ใช้ URL ของคุณที่นี่
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -26,7 +31,7 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
     .then(result => {
         console.log(result); // ตรวจสอบ Response
         if (result.status === "success") {
-            // ... โค้ดแสดงผลสำเร็จ ...
+            alert("Report submitted successfully!");
         } else {
             alert("Error submitting report: " + (result.message || "Unknown error"));
         }
@@ -36,4 +41,3 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
         alert("An error occurred. Please try again later.");
     });
 });
-// ... โค้ดส่วนอื่น ...
