@@ -20,7 +20,7 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
     };
 
     // ส่งข้อมูลไปยัง Google Apps Script (ใช้ URL ของคุณ)
-    fetch('https://https://script.google.com/macros/s/AKfycbzRzZ0mIqlzaPxtMWUQ3TRaDZeAaytyC9ALKZjLabCme_25aKtBDGONiIOVTF-wCENj/exec', {  // ใช้ URL ของคุณที่นี่
+    fetch('https://script.google.com/a/macros/homa.co/s/AKfycbxlTsWuN-HxRS9Zgg7hliOAdljg0ndwrGxF6hCa09u03CAPe_AmFaYdamswqGZiWUht/exec', {  // ใช้ URL ของคุณที่นี่
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
