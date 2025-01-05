@@ -1,7 +1,6 @@
-/* กำหนดฟอนต์ให้ทั้งหน้าเว็บใช้ Arial */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* เปลี่ยนสีพื้นหลังของหน้าเว็บ */
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,26 +9,23 @@ body {
     height: 100vh;
 }
 
-/* สไตล์สำหรับฟอร์ม */
 .form-container {
     width: 100%;
-    max-width: 400px; /* เพิ่มความกว้างสูงสุด */
+    max-width: 400px;
     padding: 30px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #ffffff; /* พื้นหลังขาว */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* ชื่อฟอร์ม */
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* สไตล์สำหรับป้ายกำกับ (labels) */
 label {
     font-size: 14px;
     margin-bottom: 5px;
@@ -38,68 +34,67 @@ label {
     display: block;
 }
 
-/* สไตล์สำหรับช่องกรอกข้อมูล (inputs & textarea) */
 input[type="text"], textarea {
     width: 100%;
     padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* เพื่อไม่ให้ช่องกรอกขยายเกินขนาด */
+    box-sizing: border-box;
     margin-bottom: 20px;
 }
 
 textarea {
-    height: 100px; /* กำหนดความสูงของ textarea */
-    resize: none; /* ปิดการขยายขนาด */
+    height: 100px;
+    resize: none;
 }
 
-/* ปุ่ม Clear สีส้ม */
 #clearBtn {
-    background-color: #ff7f50; /* สีส้ม */
+    background-color: #ff7f50;
     color: white;
     transition: background-color 0.3s ease;
 }
 
 #clearBtn:hover {
-    background-color: #e66b2b; /* สีส้มเข้มตอน hover */
+    background-color: #e66b2b;
 }
 
-/* ปุ่ม Submit สีเขียว */
 button[type="submit"] {
-    background-color: #28a745; /* สีเขียว */
+    background-color: #28a745;
     color: white;
     transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #218838; /* สีเขียวเข้มตอน hover */
+    background-color: #218838;
 }
 
-/* จัดตำแหน่งปุ่มให้แยกกันทางซ้ายและขวา */
 #reportForm {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* เพิ่ม Flexbox สำหรับการจัดตำแหน่งปุ่ม */
 button[type="submit"], #clearBtn {
-    width: 48%; /* กำหนดขนาดปุ่ม */
+    width: 48%;
     padding: 10px;
     font-size: 16px;
 }
 
-/* จัดเรียงปุ่ม */
 .button-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-/* แสดงวันที่และเวลาที่บันทึก */
 #displayDateTime {
     font-size: 14px;
     margin-top: 20px;
     color: #666;
+}
+
+#loadingStatus {
+    margin-top: 10px;
+    color: #666;
+    font-style: italic;
 }

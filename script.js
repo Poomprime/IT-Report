@@ -1,43 +1,70 @@
 document.getElementById("reportForm").addEventListener("submit", function(event) {
     event.preventDefault();
-
-    // ดึงวันที่และเวลาในรูปแบบ ISO string
+    
     var now = new Date();
-    var dateTime = now.toISOString().slice(0, 16); // YYYY-MM-DDTHH:MM
-
-    // แสดงวันที่และเวลาในหน้า HTML
-    document.getElementById("displayDateTime").textContent = "Reported on: " + now.toLocaleString();
-
+    var localDateTime = now.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' });
+    var isoDateTime = now.toLocaleString('th-TH', { 
+        timeZone: 'Asia/Bangkok',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
+    
+    document.getElementById("displayDateTime").textContent = "Reported on: " + localDateTime;
+    
     var roomNumber = document.getElementById("roomNumber").value;
     var issue = document.getElementById("topic").value;
     var details = document.getElementById("details").value;
+    
+    if (!roomNumber || !issue || !details) {
+        alert("Please fill in all fields");
+        return;
+    }
 
+    document.getElementById("loadingStatus").style.display = "block";
+    
     var data = {
         roomNumber: roomNumber,
         issue: issue,
-        dateTime: dateTime,
+        dateTime: isoDateTime,
         details: details
     };
-
-    // ส่งข้อมูลไปยัง Google Apps Script (ใช้ URL ของคุณ)
-    fetch('https://script.google.com/macros/s/AKfycbxlTsWuN-HxRS9Zgg7hliOAdljg0ndwrGxF6hCa09u03CAPe_AmFaYdamswqGZiWUht/exec', {  // ใช้ URL ของคุณที่นี่
+    
+    fetch('https://script.google.com/macros/s/AKfycbxlTsWuN-HxRS9Zgg7hliOAdljg0ndwrGxF6hCa09u03CAPe_AmFaYdamswqGZiWUht/exec', {
         method: 'POST',
+        mode: 'no-cors',
+        redirect: 'follow',
         headers: {
-            'Content-Type': 'application/json'
+           'Content-Type': 'text/plain'
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
+    .then(response => {
+        // แก้ไขการจัดการ response
+        if (response.ok) {
+            alert("Report submitted successfully!");
+            document.getElementById("reportForm").reset();
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
     .then(result => {
-        console.log(result); // ตรวจสอบ Response
+        console.log(result);
+        document.getElementById("loadingStatus").style.display = "none";
         if (result.status === "success") {
             alert("Report submitted successfully!");
+            document.getElementById("reportForm").reset();
         } else {
             alert("Error submitting report: " + (result.message || "Unknown error"));
         }
     })
     .catch(error => {
         console.error("Error:", error);
+        document.getElementById("loadingStatus").style.display = "none";
         alert("An error occurred. Please try again later.");
     });
 });
