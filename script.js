@@ -47,6 +47,9 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
         document.getElementById("loadingStatus").style.display = "none";
         alert("Report submitted successfully!");
         document.getElementById("reportForm").reset();
+        
+        // รีเฟรชหน้าเว็บไซต์หลังจากส่งข้อมูลสำเร็จ
+        window.location.reload(); // ทำให้หน้าเว็บรีเฟรช
     })
     .catch(error => {
         console.error("Error:", error);
@@ -54,4 +57,3 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
         alert("An error occurred. Please try again later.");
     });
 });
-// / test  
