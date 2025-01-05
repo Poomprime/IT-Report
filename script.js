@@ -43,24 +43,10 @@ document.getElementById("reportForm").addEventListener("submit", function(event)
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        // แก้ไขการจัดการ response
-        if (response.ok) {
-            alert("Report submitted successfully!");
-            document.getElementById("reportForm").reset();
-        } else {
-            throw new Error('Network response was not ok');
-        }
-    })
-    .then(result => {
-        console.log(result);
+    .then(() => {
         document.getElementById("loadingStatus").style.display = "none";
-        if (result.status === "success") {
-            alert("Report submitted successfully!");
-            document.getElementById("reportForm").reset();
-        } else {
-            alert("Error submitting report: " + (result.message || "Unknown error"));
-        }
+        alert("Report submitted successfully!");
+        document.getElementById("reportForm").reset();
     })
     .catch(error => {
         console.error("Error:", error);
