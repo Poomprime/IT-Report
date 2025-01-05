@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef2f7;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,74 +11,150 @@ body {
 
 .form-container {
     width: 100%;
-    max-width: 400px;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    max-width: 500px;
+    padding: 40px;
+    border: none;
+    border-radius: 12px;
     background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #333333;
 }
 
 label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555555;
     text-align: left;
     display: block;
 }
 
 input[type="text"], textarea {
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 16px;
+    font-size: 18px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
 }
 
-textarea {
-    height: 100px;
-    resize: none;
+input::placeholder, textarea::placeholder {
+    color: #999;
+    font-style: italic;
 }
 
-#clearBtn {
-    background-color: #ff7f50;
-    color: white;
-    transition: background-color 0.3s ease;
+input:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.3);
+    transform: scale(1.03);
 }
 
-#clearBtn:hover {
-    background-color: #e66b2b;
-}
-
-button[type="submit"] {
-    background-color: #28a745;
-    color: white;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #218838;
+#roomNumber {
+    height: 24px;
+    font-size: 16px;
 }
 
 #reportForm {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 button[type="submit"], #clearBtn {
     width: 48%;
-    padding: 10px;
+    padding: 14px;
     font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#clearBtn {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+#clearBtn:hover {
+    background-color: #e63946;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: translateY(4px);
+}
+
+.error {
+    border: 2px solid #ff6b6b !important;
+    background-color: #ffe6e6;
+}
+
+.processing-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.circle {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top: 6px solid #ffae00;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#loadingStatus p {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: 500;
 }
 
 .button-container {
@@ -88,51 +164,13 @@ button[type="submit"], #clearBtn {
 }
 
 #displayDateTime {
-    font-size: 14px;
-    margin-top: 20px;
-    color: #666;
+    font-size: 15px;
+    margin-top: 25px;
+    color: #777777;
 }
 
 #loadingStatus {
-    margin-top: 10px;
+    margin-top: 15px;
     color: #666;
     font-style: italic;
-}
-
-/* โค้ดสำหรับการแสดงวงกลมขณะประมวลผล */
-.processing-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center; /* จัดให้อยู่กลางแนวนอน */
-    align-items: center;    /* จัดให้อยู่กลางแนวตั้ง */
-    z-index: 1000;
-}
-
-.circle {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #ccc;
-    border-top: 5px solid #007bff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-#loadingStatus p {
-    color: #007bff;
-    font-size: 18px;
-    margin-top: 15px;
 }
